@@ -2,28 +2,25 @@ var input = document.getElementById("one");
 var button = document.getElementById("two");
 var ul = document.querySelector("ul");
 
-var inputElement = function(){
-   if (input.value.length > 0 ){
-      var li = document.createElement("li");
-      li.appendChild(document.createTextNode(input.value)); 
-      ul.appendChild(li);
-      input.value = "";
- }
-}
 
-var enterKey = function(event) {
-   console.log("event.which")
-   if (input.value.length > 0 && event.keyCode === 13 ){
-      var li = document.createElement("li");
-      li.appendChild(document.createTextNode(input.value)); 
-      ul.appendChild(li);
-      input.value = "";
-     } 
-}
+button.addEventListener("click", function(){
+  if (input.value.length > 0 ){
+     var li = document.createElement("li");
+     li.appendChild(document.createTextNode(input.value)); 
+     ul.appendChild(li);
+     input.value = "";
+  }
+});
 
-button.addEventListener("click", inputElement());
-
-input.addEventListener("keypress", enterKey());
+input.addEventListener("keypress", function(event) {
+  console.log("event.which")
+  if (input.value.length > 0 && event.keyCode === 13 ){
+     var li = document.createElement("li");
+     li.appendChild(document.createTextNode(input.value)); 
+     ul.appendChild(li);
+     input.value = "";
+    } 
+});
 
  // Create a "close" button and append it to each list item
 var closeButton = document.getElementsByTagName("LI");
